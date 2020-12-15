@@ -61,7 +61,7 @@ const get7Day = async () => {
     );
     try {
       totalData = item.map((a) => {
-        return { stateDt: a.stateDt, decideCnt: a.decideCnt };
+        return { key: a.stateDt, decideCnt: a.decideCnt };
       });
     } catch (error) {
       console.log(`error : ${error}`);
@@ -69,7 +69,7 @@ const get7Day = async () => {
   } else {
     try {
       totalData = item.map((a) => {
-        return { stateDt: a.stateDt, decideCnt: a.decideCnt };
+        return { key: a.stateDt, decideCnt: a.decideCnt };
       });
     } catch (error) {
       console.log(`error : ${error}`);
@@ -121,7 +121,11 @@ const getDay = async () => {
     );
     try {
       dayData = item.map((a) => {
+        let b = a.createDt.substr(0, 10).split("-");
+        let c = b[0] + b[1] + b[2];
+
         return {
+          key: c,
           stdDay: a.stdDay,
           gubun: a.gubun,
           defCnt: a.defCnt,
@@ -136,7 +140,11 @@ const getDay = async () => {
   } else {
     try {
       dayData = item.map((a) => {
+        let b = a.createDt.substr(0, 10).split("-");
+        let c = b[0] + b[1] + b[2];
+
         return {
+          key: c,
           stdDay: a.stdDay,
           gubun: a.gubun,
           defCnt: a.defCnt,
