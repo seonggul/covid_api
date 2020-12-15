@@ -100,6 +100,7 @@ const getDay = async () => {
   );
   console.log(item);
   if (item === undefined || null) {
+    date = date - 1;
     const {
       data: {
         response: {
@@ -114,8 +115,8 @@ const getDay = async () => {
         params: {
           ServiceKey:
             "dsbBi7zlYOjLk7SS4STAgIi3cpFgqr7RzsDUJzR5duwKHYPfuEPmA5Hh6zsxJpzTfhFqdoUCwXT/G0SuYxnpUg==",
-          startCreateDt: date - 1,
-          endCreateDt: date - 1,
+          startCreateDt: date,
+          endCreateDt: date,
         },
       }
     );
@@ -167,7 +168,7 @@ const getDay = async () => {
   await getDate();
   await get7Day();
   await getDay();
-  dataForClient = await { totalData, dayData };
+  dataForClient = await { date, totalData, dayData };
   app.get("/", (req, res) => {
     res.send(dataForClient);
   });
