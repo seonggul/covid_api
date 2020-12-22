@@ -82,7 +82,6 @@ const getDay = async () => {
       dayData = item.map((a) => {
         let b = a.createDt.substr(0, 10).split("-");
         let c = b[0] + b[1] + b[2];
-
         return {
           key: c + a.gubunEn,
           createDt: c,
