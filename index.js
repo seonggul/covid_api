@@ -1,22 +1,19 @@
 const express = require("express");
+const moment = require("moment");
 const cors = require("cors");
-const fs = require("fs");
 const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 8080;
 const Axios = require("axios");
 
-let dayData, dataForClient, date;
+let dayData;
+let dataForClient;
+let date;
+let today;
 
 const getDate = () => {
-  let year = new Date().getFullYear();
-  let month = new Date().getMonth() + 1;
-  let day = new Date().getDate();
-  if (day < 10) {
-    day = "0" + day;
-  }
-  date = String(year) + String(month) + String(day);
-  console.log(date);
+  today = moment();
+  date = today.format("YYYYMMDD");
 };
 
 const getDay = async () => {
@@ -34,13 +31,13 @@ const getDay = async () => {
       params: {
         ServiceKey:
           "dsbBi7zlYOjLk7SS4STAgIi3cpFgqr7RzsDUJzR5duwKHYPfuEPmA5Hh6zsxJpzTfhFqdoUCwXT/G0SuYxnpUg==",
-        startCreateDt: date - 7,
+        startCreateDt: today.subtract(7, "days").format("YYYYMMDD"),
         endCreateDt: date,
       },
     }
   );
   if (item === undefined || null) {
-    date = date - 1;
+    date = today.subtract(1, "days").format("YYYYMMDD");
     const {
       data: {
         response: {
@@ -55,8 +52,8 @@ const getDay = async () => {
         params: {
           ServiceKey:
             "dsbBi7zlYOjLk7SS4STAgIi3cpFgqr7RzsDUJzR5duwKHYPfuEPmA5Hh6zsxJpzTfhFqdoUCwXT/G0SuYxnpUg==",
-          startCreateDt: date - 8,
-          endCreateDt: date - 1,
+          startCreateDt: today.subtract(8, "days").format("YYYYMMDD"),
+          endCreateDt: today.subtract(1, "days").format("YYYYMMDD"),
         },
       }
     );
