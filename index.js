@@ -31,11 +31,16 @@ const getDay = async () => {
       params: {
         ServiceKey:
           "dsbBi7zlYOjLk7SS4STAgIi3cpFgqr7RzsDUJzR5duwKHYPfuEPmA5Hh6zsxJpzTfhFqdoUCwXT/G0SuYxnpUg==",
-        startCreateDt: today.subtract(7, "days").format("YYYYMMDD"),
+        startCreateDt: today.subtract(13, "days").format("YYYYMMDD"),
         endCreateDt: date,
       },
     }
   );
+
+  //날짜 초기화
+  today = moment();
+
+  //데이터가 없다면 전날데이터 가져오기
   if (item === undefined || null) {
     date = today.subtract(1, "days").format("YYYYMMDD");
     const {
@@ -52,8 +57,8 @@ const getDay = async () => {
         params: {
           ServiceKey:
             "dsbBi7zlYOjLk7SS4STAgIi3cpFgqr7RzsDUJzR5duwKHYPfuEPmA5Hh6zsxJpzTfhFqdoUCwXT/G0SuYxnpUg==",
-          startCreateDt: today.subtract(8, "days").format("YYYYMMDD"),
-          endCreateDt: today.subtract(1, "days").format("YYYYMMDD"),
+          startCreateDt: today.subtract(13, "days").format("YYYYMMDD"),
+          endCreateDt: date,
         },
       }
     );
