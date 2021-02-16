@@ -69,6 +69,7 @@ const getDay = async () => {
         return {
           key: c + a.gubunEn,
           createDt: c,
+          defDt: b[1] + "/" + b[2],
           gubun: a.gubun,
           defCnt: a.defCnt,
           incDec: a.incDec,
@@ -87,6 +88,7 @@ const getDay = async () => {
         return {
           key: c + a.gubunEn,
           createDt: c,
+          defDt: b[1] + "/" + b[2],
           gubun: a.gubun,
           defCnt: a.defCnt,
           incDec: a.incDec,
