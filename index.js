@@ -66,10 +66,11 @@ const getDay = async () => {
       dayData = item.map((a) => {
         let b = a.createDt.substr(0, 10).split("-");
         let c = b[0] + b[1] + b[2];
+        let d = moment(a.createDt).subtract(1, "d").format("MM/DD");
         return {
           key: c + a.gubunEn,
           createDt: c,
-          defDt: b[1] + "/" + b[2],
+          defDt: d,
           gubun: a.gubun,
           defCnt: a.defCnt,
           incDec: a.incDec,
@@ -85,10 +86,11 @@ const getDay = async () => {
       dayData = item.map((a) => {
         let b = a.createDt.substr(0, 10).split("-");
         let c = b[0] + b[1] + b[2];
+        let d = moment(a.createDt).subtract(1, "d").format("MM/DD");
         return {
           key: c + a.gubunEn,
           createDt: c,
-          defDt: b[1] + "/" + b[2],
+          defDt: d,
           gubun: a.gubun,
           defCnt: a.defCnt,
           incDec: a.incDec,
